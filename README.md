@@ -14,4 +14,7 @@ Result for Java Refactoring Kata from https://github.com/emilybache/GildedRose-R
 * Used JUnit testing framework to add internal functionality tests and e2e tests.
 * Testing is integrated into maven build.
 
-* 28/11/2024 Stefan De Laet
+-- 28/11/2024 Stefan De Laet
+
+* Extended Test Coverage
+
