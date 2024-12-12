@@ -4,15 +4,16 @@ import com.gildedrose.Item;
 
 public class LegendaryItem extends CategorizedItem {
     protected final static int LEGENDARYQUALITY = 80;
+    protected final static int LEGENDARYSELLIN = Integer.MAX_VALUE;
 
     public LegendaryItem(Item item){
         this(item.name, item.sellIn, item.quality);
     }
 
-    // Legendary item never has to be sold or decreases in Quality
+    // Legendary item never has to be sold nor does it decrease in Quality
     public LegendaryItem(String name, int sellIn, int quality) {
-        super(name, sellIn, quality); // this calls our overriden correctQualityBoundaries()
-        this.sellIn = Integer.MAX_VALUE;
+        super(name, sellIn, quality); // this calls my overriden method correctQualityBoundaries()
+        this.sellIn = LEGENDARYSELLIN;
         this.category = Category.LEGENDARY;
     }
 

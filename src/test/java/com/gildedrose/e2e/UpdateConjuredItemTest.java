@@ -14,20 +14,20 @@ public class UpdateConjuredItemTest extends UpdateNormalItemTest {
     @Override
     @Test
     public void testNormalQuality() {
-        CategorizedItem item =setupItem(10,10);
+        CategorizedItem item = setupAppWithItem(10,10);
         assertEquals(createExpected( 9, 8), item);
     }
 
     @Test
     public void qualityDecreasesFasterAfterSellInDateExpiredZero() {
-        CategorizedItem item =setupItem(0,10);
+        CategorizedItem item = setupAppWithItem(0,10);
         assertEquals(createExpected( -1, 6), item);
     }
 
 
     @Test
     public void qualityDecreasesFasterAfterSellInDateExpired() {
-        CategorizedItem item =setupItem(-1,10);
+        CategorizedItem item = setupAppWithItem(-1,10);
         assertEquals(createExpected( -2, 6), item);
     }
 

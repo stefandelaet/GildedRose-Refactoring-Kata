@@ -14,26 +14,26 @@ public class UpdateLegendaryItemTest extends UpdateNormalItemTest {
     @Override
     @Test
     public void testNormalQuality() {
-        CategorizedItem item =setupItem(Integer.MAX_VALUE,80);
+        CategorizedItem item = setupAppWithItem(Integer.MAX_VALUE,80);
         assertEquals(createExpected( Integer.MAX_VALUE, 80), item);
     }
 
     @Test
     public void testInitCorrection() {
-        CategorizedItem item =setupItem(1,32);
+        CategorizedItem item = setupAppWithItem(1,32);
         assertEquals(createExpected( Integer.MAX_VALUE, 80), item);
     }
 
     @Test
     public void qualityDecreasesFasterAfterSellInDateExpiredZero() {
-        CategorizedItem item =setupItem(0,10);
+        CategorizedItem item = setupAppWithItem(0,10);
         assertEquals(createExpected( Integer.MAX_VALUE, 80), item);
     }
 
 
     @Test
     public void qualityDecreasesFasterAfterSellInDateExpired() {
-        CategorizedItem item =setupItem(-1,10);
+        CategorizedItem item = setupAppWithItem(-1,10);
         assertEquals(createExpected( Integer.MAX_VALUE, 80), item);
     }
 

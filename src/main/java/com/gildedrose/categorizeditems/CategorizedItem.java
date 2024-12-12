@@ -64,11 +64,15 @@ public abstract class CategorizedItem extends Item {
     @Override
     public boolean equals(Object object) {
         if (object instanceof CategorizedItem item){
-            return
-                item.name.equals(this.name) &&
-                item.sellIn == this.sellIn &&
-                item.quality == this.quality &&
-                item.category == this.category;
+            return  item.name.equals(this.name) &&
+                    item.sellIn == this.sellIn &&
+                    item.quality == this.quality &&
+                    item.category == this.category;
+        }
+        if (object instanceof Item item){
+            return item.name.equals(this.name) &&
+                   item.sellIn == this.sellIn &&
+                   item.quality == this.quality ;
         }
         return false;
     }

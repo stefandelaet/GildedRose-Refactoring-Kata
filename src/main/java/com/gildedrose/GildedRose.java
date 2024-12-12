@@ -41,7 +41,7 @@ public class GildedRose {
 
 
     /**
-     * Use {@link #recalculateItems()} function instead. This functions name doesnt say enough.
+     * Use {@link #recalculateItems()} function instead. This functions name doesn't say enough.
      */
     @Deprecated()
     public void updateQuality(){

@@ -16,24 +16,24 @@ public class UpdateNormalItemTest {
 
     @Test
     public void testNormalQuality() {
-        CategorizedItem item =setupItem(10,10);
+        CategorizedItem item = setupAppWithItem(10,10);
         assertEquals(createExpected( 9, 9), item);
     }
 
     @Test
     public void sellInDateDecreases_butQualityCannotBeNegative() {
-        CategorizedItem item =setupItem(0,0);
+        CategorizedItem item = setupAppWithItem(0,0);
         assertEquals(createExpected( -1, 0), item);
     }
 
     @Test
     public void qualityDecreasesFasterAfterSellInDateExpiredZero() {
-        CategorizedItem item =setupItem(0,10);
+        CategorizedItem item = setupAppWithItem(0,10);
         assertEquals(createExpected( -1, 8), item);
     }
     @Test
     public void qualityDecreasesFasterAfterSellInDateExpired() {
-        CategorizedItem item = setupItem(-1,10);
+        CategorizedItem item = setupAppWithItem(-1,10);
         assertEquals(createExpected( -2, 8), item);
     }
 
@@ -41,9 +41,9 @@ public class UpdateNormalItemTest {
         return new NormalItem(getName(), sellIn, quality);
     }
 
-    protected CategorizedItem setupItem(int sellIn, int quality){
+    protected CategorizedItem setupAppWithItem(int sellIn, int quality){
         GildedRose app = new GildedRose(new Item(getName(), sellIn, quality));
-        app.updateQuality(); // use original interface
+        app.updateQuality(); // use original entrypoint
         return app.getItems().getFirst();
     }
 
