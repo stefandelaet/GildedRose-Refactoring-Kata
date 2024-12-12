@@ -2,50 +2,42 @@ package com.gildedrose.e2e;
 
 import com.gildedrose.GildedRose;
 import com.gildedrose.Item;
-import com.gildedrose.categorizeditems.CategorizedItem;
 import com.gildedrose.categorizeditems.NormalItem;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class UpdateNormalItemTest {
+public class UpdateNormalItemTest extends AbstractUpdateItemTest{
 
     protected String getName(){
         return "foo";
     }
+    @Override
+    protected Item createExpected(int sellIn, int quality){
+        return new NormalItem(getName(), sellIn, quality);
+    }
+
 
     @Test
     public void testNormalQuality() {
-        Item item =  setupAppWithItem(10,10);
+        Item item =  runAppWithOneUpdateForItem(10,10);
         assertEquals(createExpected( 9, 9), item);
     }
 
     @Test
     public void sellInDateDecreases_butQualityCannotBeNegative() {
-        Item item =  setupAppWithItem(0,0);
+        Item item =  runAppWithOneUpdateForItem(0,0);
         assertEquals(createExpected( -1, 0), item);
     }
 
     @Test
     public void qualityDecreasesFasterAfterSellInDateExpiredZero() {
-        Item item =  setupAppWithItem(0,10);
+        Item item =  runAppWithOneUpdateForItem(0,10);
         assertEquals(createExpected( -1, 8), item);
     }
     @Test
     public void qualityDecreasesFasterAfterSellInDateExpired() {
-        Item item =  setupAppWithItem(-1,10);
+        Item item =  runAppWithOneUpdateForItem(-1,10);
         assertEquals(createExpected( -2, 8), item);
     }
-
-    protected Item createExpected(int sellIn, int quality){
-        return new NormalItem(getName(), sellIn, quality);
-    }
-
-    protected Item setupAppWithItem(int sellIn, int quality){
-        GildedRose app = new GildedRose(new Item(getName(), sellIn, quality));
-        app.updateQuality(); // use original entrypoint
-        return app.getItems().getFirst();
-    }
-
-
 }

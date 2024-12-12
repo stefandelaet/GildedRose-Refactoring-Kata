@@ -3,16 +3,16 @@ package com.gildedrose.e2e;
 import com.gildedrose.GildedRose;
 import com.gildedrose.Item;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+public abstract class AbstractUpdateItemTest {
 
-public class UpdateNormalItemNewEntrypointTest extends UpdateNormalItemTest {
+    protected abstract String getName();
 
-    @Override
+    protected abstract Item createExpected(int sellIn, int quality);
+
     protected Item runAppWithOneUpdateForItem(int sellIn, int quality){
         GildedRose app = new GildedRose(new Item(getName(), sellIn, quality));
-        app.recalculateItems(); // use new entrypoint
+        app.updateQuality(); // use original entrypoint
         return app.getItems().getFirst();
     }
-
 
 }
